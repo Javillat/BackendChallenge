@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
     sequelize.define('categorie', {
         id:{
-            type:DataTypes.STRING,
+            type:DataTypes.STRING(6),
             primaryKey: true,
             allowNull:false,
         },
