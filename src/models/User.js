@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
             allowNull: false,
         },
         password:{
-            type:DataTypes.STRING(10),
+            type:DataTypes.STRING,
             allowNull:false,
         },
         address:{
@@ -31,7 +31,7 @@ module.exports = (sequelize) => {
         },
         image:{
             type:DataTypes.BLOB,
-            allowNull:false,
+            allowNull:true,
         },
     });//fin define
 };//Fin exports
