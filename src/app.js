@@ -2,7 +2,7 @@ const express = require('express');
 //const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-//const routes = require('./routes/index.js');
+const routes = require('./routes/index.js');
 
 require('./db.js');
 
@@ -17,7 +17,7 @@ server.use(morgan('dev'));
 
 //Cambiar las url's necesarias dentro del arreglo para poder realizar las peticiones y no ser filtradas o retenidas por cors.
 server.use((req, res, next) => {
-  const allowedOrigins = ['http://localhost:3000', 'http://localhost:3002'];//Tantas url's como sean necesarias para diferentes peticiones de origin.
+  const allowedOrigins = ['http://localhost:3000', 'http://localhost'];//Tantas url's como sean necesarias para diferentes peticiones de origin.
   const origin = req.headers.origin;
   //Condiciono si en el allowedOrigins se incluye cualquiera de las urls del arreglo
   if(allowedOrigins.includes(origin)){
@@ -29,7 +29,7 @@ server.use((req, res, next) => {
   return next();
 });
 
-//server.use('/', routes);
+server.use('/', routes);
 
 // Error en el proceso de petición.
 server.use((err, req, res, next) => { 
