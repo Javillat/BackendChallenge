@@ -1,0 +1,37 @@
+const { DataTypes } = require('sequelize');
+//Exportar funcion que define el modelo
+//Se le inyecta la conecxion a sequelize.
+module.exports = (sequelize) => {
+    //Defino el modelo
+    sequelize.define('user',{
+        id:{
+            type:DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            primaryKey: true,
+        },
+        email:{
+            type:DataTypes.STRING(100),
+            allowNull:false,
+            unique:true,
+            validate:{
+                isEmail:true,
+            },
+        },
+        name:{
+            type:DataTypes.STRING(100),
+            allowNull: false,
+        },
+        password:{
+            type:DataTypes.STRING(10),
+            allowNull:false,
+        },
+        address:{
+            type:DataTypes.STRING,
+            allowNull:true,
+        },
+        image:{
+            type:DataTypes.BLOB,
+            allowNull:false,
+        },
+    });//fin define
+};//Fin exports
