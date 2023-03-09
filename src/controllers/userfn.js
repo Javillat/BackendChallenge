@@ -7,24 +7,23 @@ const bcrypt = require('bcrypt');
  */
 
 postUser = async(req, res) => {
-    const { id, email, name, password } = req.body;
     try {
-        const findone = User.findOne({
+        const { email, name, password } = req.body;
+
+        const findone = await User.findOne({
             where:{email:{[Op.eq]:email}}
         });
-        const hashedPassword = await bcrypt.hash(password, 10)
+        console.log(findone);
         if(!findone){
-            const idCount = (await User.count()) + 1;
-            const idString = 'US-' + idCount;
+            const hashedPassword = await bcrypt.hash(password, 10)
             const newUser = await User.create({
-                id:idString,
-                name,
                 email,
+                name,
                 password:hashedPassword,
             });
-            res.status(201).json(newUser);
+            return res.status(201).json(newUser);
         }else{
-            res.status(304).send('Error,el usuario ya existe en nuestra bd, no creado')
+            return res.status(304).send('Error,el usuario ya existe en nuestra bd, no creado')
         }
     } catch (error) {
         console.error(error);
