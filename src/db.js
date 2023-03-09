@@ -23,6 +23,7 @@ let sequelize =
         dialectOptions: {
           ssl: {
             require: true,
+            // Ref.: https://github.com/brianc/node-postgres/issues/2009
             rejectUnauthorized: false,
           },
           keepAlive: true,
@@ -52,8 +53,12 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const {  } = sequelize.models;
+const { User, Product, Stock, Editorial  } = sequelize.models;
 
+ User.belongsToMany(Product, { through: 'user_product'});
+ Product.belongsToMany(User, { through: 'user_product'});
+ Product.belongsTo(Editorial)
+ Editorial.hasMany(Product);
 
 
 module.exports = {
