@@ -23,7 +23,6 @@ let sequelize =
         dialectOptions: {
           ssl: {
             require: true,
-            // Ref.: https://github.com/brianc/node-postgres/issues/2009
             rejectUnauthorized: false,
           },
           keepAlive: true,
@@ -55,18 +54,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const {  } = sequelize.models;
 
-// Users.belongsToMany(Vehicles, { through: 'Vehicles_Favorites'});
-// Vehicles.belongsToMany(Users, { through: 'Vehicles_Favorites'});
-// Vehicles.belongsTo(City)
-// City.hasMany(Vehicles);
-// Users.hasMany(Rent);
-// Rent.belongsTo(Users);
-// Rent.belongsTo(Vehicles);
-// Vehicles.hasMany(Rent);
-// Users.hasMany(Comments, {foreignKey:'userId'});
-// Comments.belongsTo(Users);
-// Vehicles.hasMany(Comments, {foreignKey:'vehicleId'});
-// Comments.belongsTo(Vehicles);
+
 
 module.exports = {
     ...sequelize.models,
