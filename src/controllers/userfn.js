@@ -9,6 +9,11 @@ const bcrypt = require('bcrypt');
 postUser = async(req, res) => {
     try {
         const { email, name, password } = req.body;
+        //Realizar una rutina de comprovacion de campos vacios en el body
+        /**
+         * Aqui
+         */
+        
         //Realizar una busqueda interna del email que nos llega por body, si se encuenta, retorna un status 304 y un mensaje de no creado.
         const findone = await User.findOne({
             where:{email:{[Op.eq]:email}}
