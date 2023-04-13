@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 //Exportar funcion que define el modelo
-//Se le inyecta la conecxion a sequelize.
+//Se le inyecta la conexion a sequelize.
 module.exports = (sequelize) => {
     sequelize.define('editorial',{
         id:{

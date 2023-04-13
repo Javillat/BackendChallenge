@@ -53,13 +53,20 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { User, Product, Stock, Editorial  } = sequelize.models;
+const { User, Product, Stock, Editorial, Categories  } = sequelize.models;
 
  User.belongsToMany(Product, { through: 'user_product'});
  Product.belongsToMany(User, { through: 'user_product'});
- Product.belongsTo(Editorial)
  Editorial.hasMany(Product);
-
+ Product.belongsTo(Editorial)
+ Categories.hasMany(Product);
+ Product.belongsTo(Categories);
+// Rent.belongsTo(Vehicles);
+// Vehicles.hasMany(Rent);
+// Users.hasMany(Comments, {foreignKey:'userId'});
+// Comments.belongsTo(Users);
+// Vehicles.hasMany(Comments, {foreignKey:'vehicleId'});
+// Comments.belongsTo(Vehicles);
 
 module.exports = {
     ...sequelize.models,
