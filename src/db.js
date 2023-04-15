@@ -59,8 +59,8 @@ const { User, Product, Stock, Editorial, Categories  } = sequelize.models;
  Product.belongsToMany(User, { through: 'user_product'});
  Editorial.hasMany(Product);
  Product.belongsTo(Editorial)
- Categories.hasMany(Product);
- Product.belongsTo(Categories);
+ //Categories.hasMany(Product);
+ //Product.belongsTo(Categories);
 // Rent.belongsTo(Vehicles);
 // Vehicles.hasMany(Rent);
 // Users.hasMany(Comments, {foreignKey:'userId'});
