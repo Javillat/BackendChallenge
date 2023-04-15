@@ -4,8 +4,8 @@ const user = require('../controllers/userfn.js');
 //Construir el router
 const routesuser = Router();
 
-//Crear la ruta para crear el usuario
-routesuser.post("",user.postUser);
+//Crear la ruta para registrar el usuario
+routesuser.post("/register",user.postUser);
 
 //Exportar la ruta del usuario.
 module.exports = routesuser;
