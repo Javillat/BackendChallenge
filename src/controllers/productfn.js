@@ -1,6 +1,7 @@
 const { Product, Categorie } = require('../db');
 const { Op } = require('sequelize');
 const { check } = require('express-validator');
+const { PRODUCT_TYPE } = require('../handlers/config');
 
 postProduct = async(req, res) => {
     try {
@@ -11,7 +12,7 @@ postProduct = async(req, res) => {
         const findProduct = await Product.findByPk();
         console.log(findProduct);
         if(!findProduct){
-            if(categoriaName === 'Libros'){
+            if(categoriaName === PRODUCT_TYPE.LIBRO){
                 const newBook = await Product.create({
                     isbn,
                     name, 
