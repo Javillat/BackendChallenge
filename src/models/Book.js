@@ -6,6 +6,10 @@ module.exports = (Sequelize) => {
             primaryKey:true,
             autoIncrement:true,
         },
+        isbn:{
+            type:DataTypes.STRING,
+            allowNull:false,
+        },
         title:{
             type: DataTypes.STRING,
             allowNull:false,
