@@ -63,6 +63,8 @@ const { User, Product, Stock, Editorial, Categories, Cart, Book  } = sequelize.m
  User.hasMany(Cart);
  Cart.belongsTo(Book);
  Book.hasMany(Cart);
+ Categories.belongsToMany(Product, { through: 'categories_products'});
+ Product.belongsToMany(Categories, { through: 'categories_products'})
 
  //Categories.hasMany(Product);
  //Product.belongsTo(Categories);
